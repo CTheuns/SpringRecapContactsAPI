@@ -18,7 +18,7 @@ public class ContactService {
     }
 
     public Contact getContactById(String id) {
-        return repository.getContactById(id);
+        return repository.getContactById(id).orElseThrow(UserNotFoundException::new);
     }
 
     public Contact addContact(Contact newContact) {

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/contacts")
 public class ContactsController {
     private final ContactService service;
 
@@ -21,13 +21,13 @@ public class ContactsController {
     }
 
     @GetMapping("{id}")
-    // http://localhost:8080/*id*
+    // http://localhost:8080/contacts/*id*
     public Contact getContactById(@PathVariable String id) {
         return service.getContactById(id);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    // http://localhost:8080
+    // http://localhost:8080/contacts
         // BODY: {id, name, address}
     @ResponseStatus(HttpStatus.CREATED)
     public Contact addContact(@RequestBody Contact contactToAdd) {

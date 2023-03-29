@@ -1,5 +1,7 @@
 package com.switchfully.contacts;
 
+import java.util.Objects;
+
 public class Contact {
     private String id;
     private String name;
@@ -21,5 +23,18 @@ public class Contact {
 
     public String getAddress() {
         return address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return Objects.equals(id, contact.id) && Objects.equals(name, contact.name) && Objects.equals(address, contact.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, address);
     }
 }
